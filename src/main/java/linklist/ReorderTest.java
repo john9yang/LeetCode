@@ -24,6 +24,57 @@ public class ReorderTest {
         return slow;
     }
 
+    /**
+     * 对不带头结点的单链表翻转
+     * @param head 链表头结点
+     */
+    private static LNode reversed( LNode head ){
+        if ( head == null || head.next == null )
+            return head;
+
+        LNode pre = head;   //前驱结点
+        LNode cur = head.next; //当前结点
+        LNode next;    //后继结点
+
+        pre.next = null;
+        //使当前遍历到的结点cur指向其前驱结点
+        while( cur != null ){
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
+    }
+
+    /**
+     * 对链表进行重排序
+     * @param head 链表头结点
+     */
+    public static void reorder( LNode head ){
+        if ( head == null || head.next == null || head.next.next == null )
+            return;
+        //前半部分第一个结点
+        LNode cur1 = head.next;
+        LNode mid = findMiddileNode( head.next );
+        //后半部分链表逆序后的第一个结点
+        LNode cur2 = reversed( mid );
+        LNode tmp;
+        //合并两个链表
+        while( cur1.next != null ){
+            tmp = cur1.next;
+            cur1.next = cur2;
+            cur1 = tmp;
+
+            tmp = cur2.next;
+            cur2.next = cur1;
+            cur2 = tmp;
+        }
+
+        cur1.next = cur2;
+    }
+
     public static void main(String[] args) {
         LNode head = new LNode();
         head.next = null;
@@ -42,16 +93,20 @@ public class ReorderTest {
             System.out.print( cur.data + " " );
         }
         System.out.println();
+        reorder( head );
+        System.out.println("重排序后: ");
+        for( cur = head.next;cur != null;cur = cur.next ){
+            System.out.print( cur.data + " " );
+        }
+
+//        System.out.println("倒叙后:");
+//        LNode reversedHead = reversed(head.next);
+//        for( cur = reversedHead;cur != null;cur = cur.next ){
+//            System.out.print( cur.data + " " );
+//        }
 
 //        LNode middle = findMiddileNode( head );
 //        System.out.println("中间结点: "+ middle.data );
     }
 
-    /**
-     * 对不带头结点的单链表翻转
-     * @param head 链表头结点
-     */
-    private static LNode reversed( LNode head ){
-
-    }
 }
