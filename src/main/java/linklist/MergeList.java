@@ -90,10 +90,10 @@ public class MergeList {
         ml.head.right.right = ml.insert(ml.head.right.right,22);
         ml.head.right.right = ml.insert(ml.head.right.right,15);
 
-        ml.head.right.right.right = ml.insert(ml.head.right.right.right,55);
-        ml.head.right.right.right = ml.insert(ml.head.right.right.right,40);
-        ml.head.right.right.right = ml.insert(ml.head.right.right.right,39);
-        ml.head.right.right.right = ml.insert(ml.head.right.right.right,30);
+//        ml.head.right.right.right = ml.insert(ml.head.right.right.right,55);
+//        ml.head.right.right.right = ml.insert(ml.head.right.right.right,40);
+//        ml.head.right.right.right = ml.insert(ml.head.right.right.right,39);
+//        ml.head.right.right.right = ml.insert(ml.head.right.right.right,30);
 
         //扁平化链表
         ml.head = ml.flatten(ml.head);
