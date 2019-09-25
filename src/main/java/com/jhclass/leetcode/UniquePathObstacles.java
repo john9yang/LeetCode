@@ -4,7 +4,8 @@ public class UniquePathObstacles {
 
     public static void main(String[] args) {
         int[][] grid = new int[][]{{0,0,0},{0,1,0},{0,0,0}};
-        System.out.println(new UniquePathObstacles().uniquePathsObstacles(grid));
+//        System.out.println(new UniquePathObstacles().uniquePathsObstacles(grid));
+        System.out.println(new UniquePathObstacles().uniquePathsWithObstacles2(grid));
     }
 
     public int uniquePathsObstacles(int[][] obstacleGrid){
@@ -35,4 +36,31 @@ public class UniquePathObstacles {
 
         return result[rows-1][cols-1];
     }
+
+    // 使用递归方法会超时
+    public int uniquePathsWithObstacles2(int[][] obstacleGrid) {
+        // 输入校验
+        if (obstacleGrid == null || obstacleGrid.length < 1 || obstacleGrid[0].length < 1
+            || obstacleGrid[obstacleGrid.length - 1][obstacleGrid[0].length - 1] == 1) {
+            return 0;
+        }
+        int[] result = {0};
+        solve(obstacleGrid, 0, 0, result);
+        return result[0];
+    }
+
+    public void solve(int[][] grid, int row, int col, int[] sum) {
+        // 到达终点
+        if (row == grid.length - 1 && col == grid[0].length - 1) {
+            sum[0]++;
+        }
+        // 没有到终点，点在棋盘内，并且当前位置不是
+        else if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length && grid[row][col] == 0) {
+            // 往右走
+            solve(grid, row, col + 1, sum);
+            // 往下走
+            solve(grid, row + 1, col, sum);
+        }
+    }
+
 }
