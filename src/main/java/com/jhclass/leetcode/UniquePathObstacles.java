@@ -33,7 +33,6 @@ public class UniquePathObstacles {
             for( int j=1;j<cols;j++ ){
                 result[i][j] = obstacleGrid[i][j] == 0 ? result[i-1][j]+result[i][j-1] : 0;
             }
-
         return result[rows-1][cols-1];
     }
 
