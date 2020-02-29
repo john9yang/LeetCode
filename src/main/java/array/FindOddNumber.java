@@ -22,7 +22,7 @@ public class FindOddNumber {
         }
 
         for (int i = 0; i < arr.length; i++) {
-            //异或的结果与所有第position位为1的熟异或,结果一定是出现一次的两个数中其中一个
+            //异或的结果与所有第position位为1的数异或,结果一定是出现一次的两个数中其中一个
             if ( ((arr[i]>>position) & 1) == 1 ){
                 result = result ^ arr[i];
             }
