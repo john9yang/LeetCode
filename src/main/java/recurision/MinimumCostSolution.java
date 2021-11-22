@@ -18,7 +18,7 @@ public class MinimumCostSolution {
     }
 
     public int dp(int i) {
-        if (i > 30)
+        if (i > 365)
             return 0;
         if (memo[i] != null)
             return memo[i];
