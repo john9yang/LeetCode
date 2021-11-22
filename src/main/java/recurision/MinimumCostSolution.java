@@ -10,7 +10,7 @@ public class MinimumCostSolution {
 
     public int mincostTickets(int[] days, int[] costs) {
         this.costs = costs;
-        memo = new Integer[366];
+        memo = new Integer[365];
         dayset = new HashSet();
         for (int d: days) dayset.add(d);
 
