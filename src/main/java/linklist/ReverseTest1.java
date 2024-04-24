@@ -52,5 +52,6 @@ public class ReverseTest1 {
         //将尾节点放入第一个节点
         head.next = cur;
         cur.next =pre;
+
     }
 }

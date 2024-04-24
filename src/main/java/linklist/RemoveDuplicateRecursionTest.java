@@ -2,13 +2,22 @@ package linklist;
 
 public class RemoveDuplicateRecursionTest {
 
-    private static LNode removeDupRecurision(LNode head){
-       if ( head.next == null )
-           return head;
+    /**
+     * 对带头结点的单链表删除重复结点
+     */
+    public static void removeDup( LNode head ){
+        if ( head == null )
+            return;
+        head.next = removeDupRecurision(head.next);
+    }
 
-       LNode pointer = null;
-       LNode cur = head;
-       //对以head.next为首的子链表删除重复的结点
+    private static LNode removeDupRecurision(LNode head){
+        if ( head.next == null )
+            return head;
+
+        LNode pointer = null;
+        LNode cur = head;
+        //对以head.next为首的子链表删除重复的结点
         head.next = removeDupRecurision(head.next);
         pointer = head.next;
 
@@ -25,15 +34,6 @@ public class RemoveDuplicateRecursionTest {
         }
 
         return head;
-    }
-
-    /**
-     * 对带头结点的单链表删除重复结点
-     */
-    public static void removeDup( LNode head ){
-        if ( head == null )
-            return;
-        head.next = removeDupRecurision(head.next);
     }
 
     public static void main(String[] args) {
